@@ -20,13 +20,13 @@ User authentication consists of two steps:
 <br />
 
 > **Disclaimer:**
-> 
+>
 > **Pi SDK** method `Pi.authenticate()` should only be used to retrieve user `accessToken` and **MUST be verified on the backend side of your app**.
-> 
+>
 > For a detailed guide on how to use Pi SDK, please refer to [SDK Docs](https://github.com/pi-apps/pi-platform-docs/blob/master/SDK_reference.md)
-> 
+>
 > **Pi Platform API** should remain the only source of truth about user data in your app (a malicious user could tamper with the requests and send you wrong data).
-> 
+>
 > For a detailed guide on how to use Pi Platform API, please refer to [Platform API Docs](https://github.com/pi-apps/pi-platform-docs/blob/master/platform_API.md)
 
 <br />
@@ -36,8 +36,7 @@ User authentication consists of two steps:
 `Pi.authenticate()` method takes in two arguments: `scopes` and `onIncompletePaymentFound` and returns `AuthResult` object with different keys available.
 
 `scopes` determine what keys are available on the `AuthResult` object. For full documentation on available scopes, please refer to [SDK Docs](https://github.com/pi-apps/pi-platform-docs/blob/maste[...]  
-
-`onIncompletePaymentFound` is a function that connects both Authorization and Payments flows. To preview example implementation, proceed to [`onIncompletepaymentFound`](#onincompletepaymentfound) [...] 
+`onIncompletePaymentFound` is a function that connects both Authorization and Payments flows. To preview example implementation, proceed to [`onIncompletePaymentFound`](#onincompletepaymentfound) [...]  
 
 ```typescript
 // frontend/src/shop/index.ts
@@ -57,7 +56,6 @@ const signInUser = (authResult: any) => {
   axiosClient.post("/signin", { authResult }, config);
 
   return setShowModal(false);
-};
 };
 ```
 
@@ -96,7 +94,7 @@ const signInUser = (authResult: any) => {
 
 To request a payment from the current user to your app's account, use the `Pi.createPayment()` SDK method, which accepts two arguments:
 
-1. PaymentData object consists of three fields: [`amount`](https://github.com/pi-apps/pi-platform-docs/blob/master/SDK_reference.md#amount), [`memo`](https://github.com/pi-apps/pi-platform-docs/bl[...]  
+1. PaymentData object consists of three fields: [`amount`](https://github.com/pi-apps/pi-platform-docs/blob/master/SDK_reference.md#amount), [`memo`](https://github.com/pi-apps/pi-platform-docs/bl[...]
 2. Callbacks object consisting of four callbacks:
    1. `onReadyForServerApproval`
    2. `onReadyForServerCompletion`
@@ -272,3 +270,12 @@ app.post("/incomplete", async (req, res) => {
   return res.status(200).json({ message: `Handled the incomplete payment ${paymentId}` });
 });
 ```
+
+---
+
+### Acknowledgement (signed)
+- Wallet address: GBPXYOTXSMSJBMSOVNBCVKBTGNA6KFII7YPZQ47TPNBS5RASGBLAK3HY
+- Digital signature: jKAE+QnI2qRSCaLlgtsuXyVlpc4X64xrH0aPCJekqOV38SYlwvtVrTT1YMMM/rs49HI9OyB7a+rxUCTsuy5lCg==
+- Signed by (GitHub): Darky21-hub
+- Date (UTC): 2025-08-19 04:22:56
+- Note: Acknowledgement integrated into repository.
