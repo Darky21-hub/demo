@@ -20,13 +20,13 @@ User authentication consists of two steps:
 <br />
 
 > **Disclaimer:**
->
+> 
 > **Pi SDK** method `Pi.authenticate()` should only be used to retrieve user `accessToken` and **MUST be verified on the backend side of your app**.
->
+> 
 > For a detailed guide on how to use Pi SDK, please refer to [SDK Docs](https://github.com/pi-apps/pi-platform-docs/blob/master/SDK_reference.md)
->
+> 
 > **Pi Platform API** should remain the only source of truth about user data in your app (a malicious user could tamper with the requests and send you wrong data).
->
+> 
 > For a detailed guide on how to use Pi Platform API, please refer to [Platform API Docs](https://github.com/pi-apps/pi-platform-docs/blob/master/platform_API.md)
 
 <br />
@@ -35,9 +35,9 @@ User authentication consists of two steps:
 
 `Pi.authenticate()` method takes in two arguments: `scopes` and `onIncompletePaymentFound` and returns `AuthResult` object with different keys available.
 
-`scopes` determine what keys are available on the `AuthResult` object. For full documentation on available scopes, please refer to [SDK Docs](https://github.com/pi-apps/pi-platform-docs/blob/master/SDK_reference.md#scopes).
+`scopes` determine what keys are available on the `AuthResult` object. For full documentation on available scopes, please refer to [SDK Docs](https://github.com/pi-apps/pi-platform-docs/blob/maste[...]  
 
-`onIncompletePaymentFound` is a function that connects both Authorization and Payments flows. To preview example implementation, proceed to [`onIncompletePaymentFound`](#onincompletepaymentfound) section.
+`onIncompletePaymentFound` is a function that connects both Authorization and Payments flows. To preview example implementation, proceed to [`onIncompletepaymentFound`](#onincompletepaymentfound) [...] 
 
 ```typescript
 // frontend/src/shop/index.ts
@@ -57,6 +57,7 @@ const signInUser = (authResult: any) => {
   axiosClient.post("/signin", { authResult }, config);
 
   return setShowModal(false);
+};
 };
 ```
 
@@ -95,7 +96,7 @@ const signInUser = (authResult: any) => {
 
 To request a payment from the current user to your app's account, use the `Pi.createPayment()` SDK method, which accepts two arguments:
 
-1. PaymentData object consists of three fields: [`amount`](https://github.com/pi-apps/pi-platform-docs/blob/master/SDK_reference.md#amount), [`memo`](https://github.com/pi-apps/pi-platform-docs/blob/master/SDK_reference.md#memo) and [`metadata`](https://github.com/pi-apps/pi-platform-docs/blob/master/SDK_reference.md#metadata), from which `amount` and `memo` are required by Pi Platform API, while `metadata` is for your app use.
+1. PaymentData object consists of three fields: [`amount`](https://github.com/pi-apps/pi-platform-docs/blob/master/SDK_reference.md#amount), [`memo`](https://github.com/pi-apps/pi-platform-docs/bl[...]  
 2. Callbacks object consisting of four callbacks:
    1. `onReadyForServerApproval`
    2. `onReadyForServerCompletion`
@@ -224,7 +225,7 @@ const onError = (error: Error, payment?: PaymentDTO) => {
 
 ### `onIncompletePaymentFound`
 
-`onIncompletePaymentFound` connects both Authentication and Payment flows. It is the second argument required by `Pi.authenticate()` SDK method, which checks for the user's incomplete payment each time the user is authenticated. If an incomplete payment is found, `onIncompletePaymentFound` callback will be invoked with the payment's [PaymentDTO](https://github.com/pi-apps/pi-platform-docs/blob/master/platform_API.md#paymentdto) object and the corresponding payment must be completed inside of your app. For more details about `onIncompletePaymentFound` please refer to [SDK Docs](https://github.com/pi-apps/pi-platform-docs/blob/master/SDK_reference.md#onincompletepaymentfound)
+`onIncompletePaymentFound` connects both Authentication and Payment flows. It is the second argument required by `Pi.authenticate()` SDK method, which checks for the user's incomplete payment eac[...]  
 
 ```typescript
 // frontend/src/Shop/index.ts
